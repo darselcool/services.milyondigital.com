@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milyon Digital - Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Ajustes para la sección de portfolio */
+    .portfolio-section .section-title {
+      font-size: 2.5rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .portfolio-section .section-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    /* Asegura que los enlaces en la sección de portfolio no muestren el azul predeterminado */
+    .portfolio-section a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .portfolio-section a:hover {
+      color: var(--pink);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html">
+          <img src="https://services.milyondigital.com/logo.webp" alt="Milyon Digital Logo">
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-menu">
+        <a href="portfolio.html">Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="portfolio-section">
+    <h1 class="section-title">Our Portfolio</h1>
+    <p class="section-subtitle">Explore our latest projects and collaborations.</p>
+
+    <div class="filter-dropdown">
+      <label for="categoryFilter">Filter by category:</label>
+      <select id="categoryFilter">
+        <option value="all">ALL</option>
+        <option value="sports">SPORTS</option>
+        <option value="technology">TECHNOLOGY</option>
+      </select>
+    </div>
+
+    <div class="projects-container">
+      <div class="projects-grid">
+        <div class="project-card" data-category="sports">
+          <a href="project.html">
+            <img src="https://placehold.co/600x400" alt="CR7" class="project-image">
+            <div class="project-info">
+              <h3 class="project-title">Project 1</h3>
+              <p class="project-description">The most successful YouTube launch in history.</p>
+            </div>
+          </a>
+        </div>
+        <div class="project-card" data-category="technology">
+          <a href="#">
+            <img src="https://placehold.co/600x400" alt="KPN" class="project-image">
+            <div class="project-info">
+              <h3 class="project-title">Project 2</h3>
+              <p class="project-description">KPN launched its "Better Internet" brand platform with a record-breaking tune.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+      <div class="footer-content">
+          <p>&copy; 2025 Milyon Digital</p>
+      </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Filtro por categoría
+      document.getElementById('categoryFilter').addEventListener('change', function(e) {
+        const selectedCategory = e.target.value;
+        const projects = document.querySelectorAll('.project-card');
+        
+        projects.forEach(project => {
+          if (selectedCategory === 'all' || project.dataset.category === selectedCategory) {
+            project.classList.remove('hidden');
+          } else {
+            project.classList.add('hidden');
+          }
+        });
+      });
+
+      // Mobile menu mejorado
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && 
+            !navMenu.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+          navMenu.classList.remove('active');
+          menuToggle.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        }
+      });
+
+      // Close menu when clicking a nav link
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
