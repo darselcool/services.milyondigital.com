@@ -1,0 +1,263 @@
+/* Integración de la fuente Montserrat con varias variaciones */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('webfonts/Montserrat-Regular.woff2') format('woff2'),
+         url('webfonts/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('webfonts/Montserrat-Bold.woff2') format('woff2'),
+         url('webfonts/Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Navbar */
+.navbar {
+    background-color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #E8388C;
+}
+
+.logo-img {
+    width: 160px;
+    height: auto;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background-color: #E8388C;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    animation: color-transition 20s infinite linear;
+    overflow: hidden;
+}
+
+@keyframes color-transition {
+    0% { background-color: #E8388C; }
+    25% { background-color: #FDBB2C; }
+    50% { background-color: #147876; }
+    75% { background-color: #0F5B50; }
+    100% { background-color: #E8388C; }
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: #FFD700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Coloca el contenido al frente */
+    text-align: center;
+}
+
+.cta-button {
+    background-color: #147876;
+    border-radius: 30px;
+    padding: 12px 25px;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    position: relative; /* Asegura que el botón esté al frente */
+    z-index: 2; /* Coloca el botón al frente */
+}
+
+.cta-button:hover {
+    background-color: #0F5B50;
+    transform: scale(1.05);
+}
+
+/* Rotating Star Image */
+.rotating-image {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0.05; /* Reduce opacidad para no opacar el contenido */
+    animation: rotate 30s infinite linear;
+    z-index: 1; /* Mantener la imagen detrás del contenido */
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Services Section */
+.services-section, .additional-services-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+}
+
+.services-section h2, .additional-services-section h2 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjetas de Services Section */
+.feature-card {
+    background-color: #fff;
+    color: #147876;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #147876;
+    background-color: #e0f7f4;
+    padding: 15px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover i {
+    color: #fff;
+    background-color: #147876;
+}
+
+.feature-card span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #147876;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #147876;
+}
+
+/* Tarjetas de Additional Services Section */
+.additional-services-section .feature-card {
+    background-color: #fff;
+    color: #f33290;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.additional-services-section .feature-card i {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #f33290;
+    background-color: rgba(243, 50, 144, 0.1);
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.additional-services-section .feature-card span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #f33290;
+}
+
+.additional-services-section .feature-card p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #f33290;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
