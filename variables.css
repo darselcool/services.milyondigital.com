@@ -1,0 +1,14 @@
+:root {
+    --pink: #E8388C;
+    --teal: #147876;
+    --yellow: #FDBB2C;
+    --black: #000;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
