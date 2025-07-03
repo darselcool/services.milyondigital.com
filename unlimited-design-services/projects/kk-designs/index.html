@@ -15,9 +15,14 @@
                     <img src="https://services.milyondigital.com/logo.webp" alt="Milyon Digital Logo">
                 </a>
             </div>
+            <button class="menu-toggle" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="nav-menu">
-                <a href="../../portfolio.html">works</a>
-                <a href="#contact">contact</a>
+                <a href="../../portfolio.html">Works</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -47,8 +52,6 @@
                 <!-- Project Information -->
                 <div class="project-info">
                     <div class="info-grid">
-                       
-
                         <div class="project-metadata">
                             <div class="metadata-group">
                                 <h3>Client</h3>
@@ -100,5 +103,45 @@
             <p>&copy; 2025 Milyon Digital</p>
         </div>
     </footer>
+
+    <script>
+    (() => {
+        'use strict';
+
+        // Mobile menu functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') && 
+                    !navMenu.contains(e.target) && 
+                    !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+
+            // Close menu when clicking a nav link
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
